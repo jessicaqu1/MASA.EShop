@@ -1,0 +1,10 @@
+﻿global using Dapr;
+global using MASA.BuildingBlocks.Dispatcher.IntegrationEvents;
+global using MASA.Contrib.Service.MinimalAPIs;
+global using MASA.EShop.Services.Basket.Entities;
+global using MASA.EShop.Services.Basket.Infrastructure.Repositories;
+global using MASA.EShop.Services.Basket.Model;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text.Json;
