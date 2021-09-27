@@ -1,8 +1,6 @@
-﻿
-namespace MASA.EShop.Services.Basket.Infrastructure.Events
+﻿namespace MASA.EShop.Services.Basket.Infrastructure.Events;
+
+public class OrderStartedIntegrationEvent : IntegrationEvent
 {
-    public class OrderStartedIntegrationEvent : IntegrationEvent
-    {
-        public override string Topic { get; set; } = nameof(OrderStartedIntegrationEvent);
-    }
+    public override string Topic { get; set; } = nameof(OrderStartedIntegrationEvent);
 }

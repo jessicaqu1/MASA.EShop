@@ -1,17 +1,14 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDaprClient();
-builder.Services
+var app = builder.Services
     .AddLazyWebApplication(builder)
-    //todo 
     .AddScoped<IBasketRepository,BasketRepository>()
-    .AddDbContext<IntegrationEventLogContext>(options => options.UseSqlServer(""))
-    .AddUow<BasketDbContext>(options => options.UseSqlServer(""))
-    .AddEventBus(AppDomain.CurrentDomain.GetAssemblies())
-    .AddDaprEventBus<IntegrationEventLogService>()
+    .AddUow<IntegrationEventLogContext>(options => options.UseSqlServer(""))
+    .AddDaprEventBus<IntegrationEventLogService>(options=> {
+        options.UseEventBus(builder.Services,AppDomain.CurrentDomain.GetAssemblies())
+        .UseEFEventLog(builder.Services);
+    })
     .AddServices();
-
-var app = builder.Services.BuildServiceProvider().GetRequiredService<WebApplication>();
 
 app.Run();
 
