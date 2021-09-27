@@ -13,16 +13,12 @@ public class BasketRepository : IBasketRepository
 
     public async Task DeleteBasketAsync(string id)
     {
-        //var deleteItem = await _context.BasketItems.FindAsync(id);
-        //_context.BasketItems.Remove(deleteItem);
-        //await _context.SaveChangesAsync();
         await _dapr.DeleteStateAsync(StoreName, id);
     }
 
     public async Task<CustomerBasket> GetBasketAsync(string customerId)
     {
         return await _dapr.GetStateAsync<CustomerBasket>(StoreName, customerId);
-        //return await _context.CustomerBaskets.FirstOrDefaultAsync(a => a.BuyerId == customerId);
     }
 
     public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
@@ -33,12 +29,4 @@ public class BasketRepository : IBasketRepository
 
         return await GetBasketAsync(basket.BuyerId);
     }
-
-    //public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
-    //{
-    //    var updateItem = await GetBasketAsync(basket.BuyerId);
-    //    updateItem.Items = basket.Items;
-    //    await _context.SaveChangesAsync();
-    //    return updateItem;
-    //}
 }
