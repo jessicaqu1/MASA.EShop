@@ -1,12 +1,3 @@
-
-using MASA.BuildingBlocks.Dispatcher.IntegrationEvents.Logs;
-using MASA.Contrib.Data.Uow.EF;
-using MASA.Contrib.Dispatcher.Events;
-using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
-using MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF;
-using MASA.EShop.Services.Basket.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDaprClient();
