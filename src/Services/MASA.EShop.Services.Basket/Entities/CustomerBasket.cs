@@ -4,6 +4,7 @@ namespace MASA.EShop.Services.Basket.Entities
 {
     public class CustomerBasket
     {
+        //todo key-value => relational
         public string BuyerId { get; set; }
 
         public List<BasketItem> Items { get; set; } = new List<BasketItem>();
