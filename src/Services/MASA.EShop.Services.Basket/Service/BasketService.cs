@@ -1,6 +1,4 @@
 ﻿
-using MASA.EShop.Services.Basket.Infrastructure.Events;
-
 namespace MASA.EShop.Services.Basket.Service;
 public class BasketService : ServiceBase
 {

@@ -1,5 +1,4 @@
-﻿using MASA.EShop.Services.Basket.Entities;
-
+﻿
 namespace MASA.EShop.Services.Basket.Entities
 {
     public class CustomerBasket

@@ -1,5 +1,4 @@
-﻿using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
-
+﻿
 namespace MASA.EShop.Services.Basket.Infrastructure.Events
 {
     public class OrderStartedIntegrationEvent : IntegrationEvent
