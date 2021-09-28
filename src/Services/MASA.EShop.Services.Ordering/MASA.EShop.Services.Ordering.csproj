@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="Model\" />
+    <Folder Include="Application\Orders\Commands\" />
+    <Folder Include="Application\Orders\Queries\" />
   </ItemGroup>
 
 </Project>

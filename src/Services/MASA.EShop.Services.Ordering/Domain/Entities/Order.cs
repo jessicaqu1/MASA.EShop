@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace MASA.EShop.Services.Ordering.Entity
+﻿namespace MASA.EShop.Services.Ordering.Entities
 {
     public class Order
     {
