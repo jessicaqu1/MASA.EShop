@@ -11,6 +11,7 @@ global using MASA.EShop.Services.Basket.Infrastructure.Repositories;
 global using MASA.EShop.Services.Basket.Model;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.OpenApi.Models;
 global using System.ComponentModel.DataAnnotations;
 global using System.Security.Claims;
 

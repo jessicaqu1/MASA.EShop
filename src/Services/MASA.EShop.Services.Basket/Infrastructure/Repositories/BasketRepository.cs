@@ -2,7 +2,7 @@
 
 public class BasketRepository : IBasketRepository
 {
-    private const string StoreName = "eshop-statestore";
+    private const string StoreName = "statestore";
 
     private readonly DaprClient _dapr;
 
