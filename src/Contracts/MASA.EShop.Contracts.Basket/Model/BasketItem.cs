@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Basket.Model;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MASA.EShop.Contracts.Basket.Model;
 
 public class BasketItem : IValidatableObject
 {
