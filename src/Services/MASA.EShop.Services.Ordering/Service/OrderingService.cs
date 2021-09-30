@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Service
+﻿using MASA.EShop.Contracts.Basket;
+
+namespace MASA.EShop.Services.Ordering.Service
 {
     public class OrderingService : ServiceBase
     {
@@ -13,7 +15,50 @@
             App.MapGet("/api/v1/orders/{orderNumber:int}", ShipOrderAsync);
             App.MapGet("/api/v1/orders/list", GetOrdersAsync);
             App.MapGet("/api/v1/orders/cardtypes", GetCardTypesAsync);
+
+            App.MapPost("/api/v1/orders/paymentsucceeded", OrderPaymentSucceeded);
+            App.MapPost("/api/v1/orders/paymentfailed", OrderPaymentFailed);
+            App.MapPost("/api/v1/orders/UserCheckoutAccepted", UserCheckoutAccepted);
         }
+
+        #region  todo delete
+        private const string DaprPubSubName = "pubsub";
+
+        private static IOrderingProcessActor GetOrderingProcessActor(Guid orderId)
+        {
+            var actorId = new ActorId(orderId.ToString());
+            return ActorProxy.Create<IOrderingProcessActor>(actorId, nameof(OrderingProcessActor));
+        }
+
+        [Topic(DaprPubSubName, "UserCheckoutAcceptedIntegrationEvent")]
+        public async Task UserCheckoutAccepted(UserCheckoutAcceptedIntegrationEvent integrationEvent)
+        {
+            if (integrationEvent.RequestId != Guid.Empty)
+            {
+                var orderingProcess = GetOrderingProcessActor(integrationEvent.RequestId);
+
+                await orderingProcess.Submit(integrationEvent.UserId, integrationEvent.UserName,
+                    integrationEvent.Street, integrationEvent.City, integrationEvent.ZipCode,
+                    integrationEvent.State, integrationEvent.Country, integrationEvent.Basket);
+            }
+            else
+            {
+                //_logger.LogWarning("Invalid IntegrationEvent - RequestId is missing - {@IntegrationEvent}", integrationEvent);
+            }
+        }
+
+        [Topic(DaprPubSubName, "OrderPaymentSucceededIntegrationEvent")]
+        public Task OrderPaymentSucceeded(OrderPaymentSucceededIntegrationEvent integrationEvent)
+        {
+            return GetOrderingProcessActor(integrationEvent.OrderId).NotifyPaymentSucceeded();
+        }
+
+        [Topic(DaprPubSubName, "OrderPaymentFailedIntegrationEvent")]
+        public Task OrderPaymentFailed(OrderPaymentFailedIntegrationEvent integrationEvent)
+        {
+            return GetOrderingProcessActor(integrationEvent.OrderId).NotifyPaymentFailed();
+        }
+        #endregion
 
         public async Task<IResult> CancelOrderAsync(int orderNumber, [FromHeader(Name = "x-requestid")] string requestId)
         {
