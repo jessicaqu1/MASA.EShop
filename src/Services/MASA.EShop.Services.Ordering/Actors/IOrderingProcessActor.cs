@@ -2,5 +2,12 @@
 {
     public interface IOrderingProcessActor : IActor
     {
+        Task<bool> Cancel();
+
+        Task<bool> Ship();
+
+        Task NotifyPaymentSucceeded();
+
+        Task NotifyPaymentFailed();
     }
 }

@@ -28,18 +28,18 @@ services:
       dockerfile: src/Services/MASA.EShop.Services.Payment/Dockerfile
 
 
-  masa.eshop.web.admin:
-    image: ${DOCKER_REGISTRY-}masaeshopwebadmin
-    build:
-      context: .
-      dockerfile: src/Web/MASA.EShop.Web.Admin/Dockerfile
+  #masa.eshop.web.admin:
+  #  image: ${DOCKER_REGISTRY-}masaeshopwebadmin
+  #  build:
+  #    context: .
+  #    dockerfile: src/Web/MASA.EShop.Web.Admin/Dockerfile
 
 
-  masa.eshop.web.client:
-    image: ${DOCKER_REGISTRY-}masaeshopwebclient
-    build:
-      context: .
-      dockerfile: src/Web/MASA.EShop.Web.Client/Dockerfile
+  #masa.eshop.web.client:
+  #  image: ${DOCKER_REGISTRY-}masaeshopwebclient
+  #  build:
+  #    context: .
+  #    dockerfile: src/Web/MASA.EShop.Web.Client/Dockerfile
 
 
   masa.eshop.api.open:

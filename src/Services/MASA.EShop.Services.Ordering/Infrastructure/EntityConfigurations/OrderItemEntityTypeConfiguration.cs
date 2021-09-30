@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations
+﻿using OrderItem = MASA.EShop.Services.Ordering.Entities.OrderItem;
+
+namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations
 {
     class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderItem>
     {

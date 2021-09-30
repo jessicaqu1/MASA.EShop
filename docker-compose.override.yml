@@ -133,37 +133,37 @@ services:
       - "./dapr/components/:/components"
     network_mode: "service:masa.eshop.api.open"
 
-  masa.eshop.web.admin:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-    ports:
-      - "8080:80"
-      - "8443:443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-  masa.eshop.web.admin.dapr:
-    image: "daprio/daprd:1.4.0"
-    command: ["./daprd",
-      "-app-id", "masa-eshop-web-admin",
-      "-app-port", "80",
-      "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
-      ]
-    depends_on:
-      - masa.eshop.web.admin
-    volumes:
-      - "./dapr/components/:/components"
-    network_mode: "service:masa.eshop.web.admin"
+  #masa.eshop.web.admin:
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
+  #    - ASPNETCORE_URLS=https://+:443;http://+:80
+  #  ports:
+  #    - "8080:80"
+  #    - "8443:443"
+  #  volumes:
+  #    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  #masa.eshop.web.admin.dapr:
+  #  image: "daprio/daprd:1.4.0"
+  #  command: ["./daprd",
+  #    "-app-id", "masa-eshop-web-admin",
+  #    "-app-port", "80",
+  #    "-components-path", "/components",
+  #    "-placement-host-address", "placement:50006",
+  #    ]
+  #  depends_on:
+  #    - masa.eshop.web.admin
+  #  volumes:
+  #    - "./dapr/components/:/components"
+  #  network_mode: "service:masa.eshop.web.admin"
 
-  masa.eshop.web.client:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-    ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  #masa.eshop.web.client:
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
+  #    - ASPNETCORE_URLS=https://+:443;http://+:80
+  #  ports:
+  #    - "80"
+  #    - "443"
+  #  volumes:
+  #    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
 

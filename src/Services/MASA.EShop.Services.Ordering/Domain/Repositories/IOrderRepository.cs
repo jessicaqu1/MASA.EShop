@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Domain.Repositories
+﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+
+namespace MASA.EShop.Services.Ordering.Domain.Repositories
 {
     public interface IOrderRepository
     {

@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Model
+﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+
+namespace MASA.EShop.Services.Ordering.Model
 {
     public class OrderDto
     {
