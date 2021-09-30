@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Basket.Model;
+﻿namespace MASA.EShop.Contracts.Basket.Model;
 
 public class CustomerBasket
 {

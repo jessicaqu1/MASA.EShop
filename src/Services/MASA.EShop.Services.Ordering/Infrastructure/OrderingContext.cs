@@ -1,6 +1,9 @@
-﻿namespace MASA.EShop.Services.Ordering.Infrastructure
+﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+using OrderItem = MASA.EShop.Services.Ordering.Entities.OrderItem;
+
+namespace MASA.EShop.Services.Ordering.Infrastructure
 {
-    public class OrderingContext: DbContext
+    public class OrderingContext: IntegrationEventLogContext
     {
         public const string DEFAULT_SCHEMA = "ordering";
 
@@ -8,17 +11,17 @@
         public DbSet<OrderItem> OrderItems { get; set; } = default!;
         public DbSet<CardType> CardTypes { get; set; } = default!;
 
-        public OrderingContext(DbContextOptions<OrderingContext> options) : base(options)
+        public OrderingContext(MasaDbContextOptions<OrderingContext> options) : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreatingExecuting(ModelBuilder builder)
         {
-            modelBuilder.Entity<Order>().OwnsOne(o => o.Address);
+            builder.Entity<Order>().OwnsOne(o => o.Address);
 
-            modelBuilder.ApplyConfiguration(new OrderEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderItemEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new CardTypeEntityTypeConfiguration());
+            builder.ApplyConfiguration(new OrderEntityTypeConfiguration());
+            builder.ApplyConfiguration(new OrderItemEntityTypeConfiguration());
+            builder.ApplyConfiguration(new CardTypeEntityTypeConfiguration());
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace MASA.EShop.Services.Basket.Service;
+﻿using MASA.EShop.Contracts.Basket;
+using MASA.EShop.Contracts.Basket.Model;
+
+namespace MASA.EShop.Services.Basket.Service;
 
 public class BasketService : ServiceBase
 {
@@ -49,7 +52,7 @@ public class BasketService : ServiceBase
         }
         var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value??"";
 
-        await _eventBus.PublishAsync(new CheckoutAcceptedIntegrationEvent(userId,
+        await _eventBus.PublishAsync(new UserCheckoutAcceptedIntegrationEvent(userId,
                 userName,
                 basketCheckout.City,
                 basketCheckout.Street,
@@ -75,11 +78,11 @@ public class BasketService : ServiceBase
         await _repository.DeleteBasketAsync(id);
     }
 
-    [Topic(DAPR_PUBSUB_NAME, "OrderStartedIntegrationEvent")]
-    public async Task OrderStarted(OrderStartedIntegrationEvent @event)
+    [Topic(DAPR_PUBSUB_NAME, "OrderStatusChangedToSubmittedIntegrationEvent")]
+    public async Task OrderStarted(OrderStatusChangedToSubmittedIntegrationEvent @event)
     {
-        /*var handler = _serviceProvider.GetRequiredService<OrderStatusChangedToSubmittedIntegrationEventHandler>();
-        await handler.Handle(@event);*/
+        _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, "Basket", @event);
 
+        await _repository.DeleteBasketAsync(@event.BuyerId);
     }
 }

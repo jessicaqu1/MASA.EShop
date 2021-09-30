@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations
+﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+
+namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations
 {
     class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
     {

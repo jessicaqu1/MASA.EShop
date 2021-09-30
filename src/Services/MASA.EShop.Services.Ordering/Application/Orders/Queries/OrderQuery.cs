@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.Orders.Queries
+﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+
+namespace MASA.EShop.Services.Ordering.Application.Orders.Queries
 {
     public class OrderQuery : Query<Order?>
     {
