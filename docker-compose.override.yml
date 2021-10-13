@@ -12,7 +12,7 @@ services:
   masa.eshop.services.basket:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
     ports:
       - "8081:80"
       - "9091:443"
@@ -38,7 +38,7 @@ services:
   masa.eshop.services.catalog:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
     ports:
       - "8082:80"
       - "9092:443"
@@ -63,7 +63,7 @@ services:
   masa.eshop.services.ordering:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
     ports:
       - "8083:80"
       - "9093:443"
@@ -88,7 +88,7 @@ services:
   masa.eshop.services.payment:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
     ports:
       - "8084:80"
       - "9094:443"
@@ -113,7 +113,7 @@ services:
   masa.eshop.api.open:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
     ports:
       - "8085:80"
       - "9095:443"
