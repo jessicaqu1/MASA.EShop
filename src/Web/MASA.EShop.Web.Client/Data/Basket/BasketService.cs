@@ -35,7 +35,7 @@ public class BasketService : IBasketService
             Quantity = 1
         };
 
-        //todo move to api open (bfff)
+        //todo move to api open (bff)
 
         // Step 1: Get the item from catalog
         var item = await _catalogService.GetCatalogById(newItem.CatalogItemId);

@@ -1,3 +1,6 @@
+using MASA.EShop.Api.Caller;
+using MASA.EShop.Web.Client.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMasaBlazor();
@@ -15,6 +18,13 @@ builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddHttpClient<ICatalogService, CatalogService>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
 builder.Services.AddHttpClient<IBasketService, BasketService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddHttpClient<IOrderService, OrderService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+builder.Services.AddCallerService(a =>
+{
+    a.SetBaseAddress<CallerService>("12333").SetHandlerLifetime(TimeSpan.FromMinutes(5));
+    a.SetBaseAddress<CallerService>("12333").AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+    a.SetBaseAddress<CallerService>("12333").AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+});
 
 // Add Authentication services          
 builder.Services.AddAuthentication(options =>
