@@ -4,6 +4,7 @@ namespace MASA.EShop.Api.Caller
 {
     public class CallerServiceOptions
     {
+
         private Dictionary<string, string> _dicBaseAddress = new();
         private Dictionary<string, string> _dicAppId = new();
 
