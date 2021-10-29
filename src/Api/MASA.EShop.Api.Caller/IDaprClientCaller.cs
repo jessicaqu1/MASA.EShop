@@ -2,5 +2,6 @@
 {
     public interface IDaprClientCaller : ICaller, IDisposable
     {
+        public string? AppId { get; init; }
     }
 }

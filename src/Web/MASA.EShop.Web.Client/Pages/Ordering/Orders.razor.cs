@@ -10,7 +10,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
     private List<OrderSummary> _orders = new();
 
     [Inject]
-    private IOrderService _orderService { get; set; } = default!;
+    private OrderService _orderService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

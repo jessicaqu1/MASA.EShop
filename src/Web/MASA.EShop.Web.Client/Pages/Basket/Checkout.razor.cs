@@ -6,7 +6,7 @@ public partial class Checkout : EShopPageBase
     private ShipAddressViewModel _shipAddressViewModel = new();
 
     [Inject]
-    private IBasketService _baksetService { get; set; } = default!;
+    private BasketService _baksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

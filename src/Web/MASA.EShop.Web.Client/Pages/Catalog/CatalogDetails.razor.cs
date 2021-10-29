@@ -9,7 +9,7 @@
         public int Id { get; set; }
 
         [Inject] //todo :change api open
-        private ICatalogService _catalogService { get; set; } = default!;
+        private CatalogService _catalogService { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {

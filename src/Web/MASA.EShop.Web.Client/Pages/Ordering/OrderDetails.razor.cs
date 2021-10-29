@@ -12,7 +12,7 @@ public partial class OrderDetails : EShopPageBase
     public int OrderNumber { get; set; }
 
     [Inject]
-    private IOrderService _orderService { get; set; } = default!;
+    private OrderService _orderService { get; set; } = default!;
 
     protected async override Task OnInitializedAsync()
     {

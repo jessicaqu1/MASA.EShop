@@ -12,7 +12,7 @@ public partial class Login : EShopPageBase
 
     private async void LoginHandler()
     {
-        var httpClient = _clientFactory.CreateClient(nameof(CallerService));
+        var httpClient = _clientFactory.CreateClient(nameof(BasketService));
         if (_userName.Equals("masa") && _password.Equals("eshop"))
         {
             await ProtectedSessionStore.SetAsync("user", _userName);
