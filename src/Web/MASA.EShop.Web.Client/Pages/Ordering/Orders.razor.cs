@@ -1,7 +1,7 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
-public partial class Orders : EShopBasePage, IAsyncDisposable
+public partial class Orders : EShopPageBase, IAsyncDisposable
 {
 
     private HubConnection hubConnection;
@@ -19,7 +19,7 @@ public partial class Orders : EShopBasePage, IAsyncDisposable
         {
             await LoadOrders();
             hubConnection = new HubConnectionBuilder()
-                .WithUrl("http://masa.eshop.services.ordering/hub/notificationhub",
+                .WithUrl($"{Settings.Value.OrderingUrl}/hub/notificationhub",
                     HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
                     {
                         options.AccessTokenProvider = () =>
