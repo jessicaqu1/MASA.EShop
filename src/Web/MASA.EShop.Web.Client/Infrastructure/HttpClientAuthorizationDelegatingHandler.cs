@@ -7,6 +7,7 @@ public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
     public HttpClientAuthorizationDelegatingHandler(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
+        InnerHandler = new HttpClientHandler();
     }
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

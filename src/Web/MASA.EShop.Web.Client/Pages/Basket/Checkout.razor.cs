@@ -1,4 +1,8 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿using MASA.EShop.Contracts.Basket.Model;
+using MASA.EShop.Web.Client.Services.Basket;
+using MASA.EShop.Web.Client.Services.Ordering.ViewModel;
+
+namespace MASA.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
 public partial class Checkout : EShopPageBase
@@ -58,7 +62,6 @@ public partial class Checkout : EShopPageBase
                                         _shipAddressViewModel.CardSecurityCode, 1, _shipAddressViewModel.Buyer, Guid.NewGuid());
 
                 await _baksetService.CheckoutAsync(basketCheckout);
-                //Navigation("/basket/success");
                 Navigation("orders");
             }
             catch (Exception e)

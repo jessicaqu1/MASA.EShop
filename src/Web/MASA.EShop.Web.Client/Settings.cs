@@ -4,14 +4,6 @@
     {
         public string ApiGatewayUrlExternal { get; set; }
 
-        #region todo change bff api
-
-        public string BasketUrl { get; set; }
-
-        public string CatalogUrl { get; set; }
-
-        public string OrderingUrl { get; set; }
-
-        #endregion
+        public string OrderHubUrl { get; set; }
     }
 }

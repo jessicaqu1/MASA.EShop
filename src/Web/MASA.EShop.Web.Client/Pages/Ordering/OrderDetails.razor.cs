@@ -1,4 +1,7 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
+﻿using MASA.EShop.Contracts.Ordering.Model;
+using MASA.EShop.Web.Client.Services.Ordering;
+
+namespace MASA.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
 public partial class OrderDetails : EShopPageBase

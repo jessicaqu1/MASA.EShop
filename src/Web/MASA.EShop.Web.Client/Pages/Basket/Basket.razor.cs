@@ -1,4 +1,7 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿using MASA.EShop.Contracts.Basket.Model.Web;
+using MASA.EShop.Web.Client.Services.Basket;
+
+namespace MASA.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
 public partial class Basket : EShopPageBase
@@ -38,7 +41,8 @@ public partial class Basket : EShopPageBase
         }
     }
 
-    private async Task RemoveItemAsync(int productId) {
+    private async Task RemoveItemAsync(int productId)
+    {
         try
         {
             await _baksetService.RemoveItemAsync(User.Identity.Name, productId);

@@ -1,4 +1,6 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
+﻿using MASA.EShop.Contracts.Catalog.Model;
+
+namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
 
 public class CatalogViewModel
 {

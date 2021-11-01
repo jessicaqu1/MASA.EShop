@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Api\MASA.EShop.Api.Caller\MASA.EShop.Api.Caller.csproj" />
+    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Basket\MASA.EShop.Contracts.Basket.csproj" />
+    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj" />
+    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
   </ItemGroup>
 
   <ItemGroup>
