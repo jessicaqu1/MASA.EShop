@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Basket
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Catalog", "src\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj", "{CF77B98C-21AD-4899-9710-10D9D084F235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MASA.EShop.Api.Caller", "src\Api\MASA.EShop.Api.Caller\MASA.EShop.Api.Caller.csproj", "{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Api.Caller", "src\Api\MASA.EShop.Api.Caller\MASA.EShop.Api.Caller.csproj", "{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

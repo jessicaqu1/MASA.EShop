@@ -53,5 +53,15 @@ public partial class Basket : EShopPageBase
             Message(ex.Message, AlertTypes.Error);
         }
     }
+
+    private void NavToCheckout()
+    {
+        if (_userBasket.Items.Any())
+        {
+            Navigation("basket/checkout");
+            return;
+        }
+        Message("购物车中没有商品", AlertTypes.Warning);
+    }
 }
 
