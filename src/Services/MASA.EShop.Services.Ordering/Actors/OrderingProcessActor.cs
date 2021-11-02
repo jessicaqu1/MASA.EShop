@@ -101,24 +101,24 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
 
     public async Task<bool> Cancel()
     {
-        //var orderStatus = await StateManager.TryGetStateAsync<OrderStatus>(OrderStatusStateName);
-        //if (!orderStatus.HasValue)
-        //{
-        //    _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it doesn't exist",
-        //        OrderId);
+        var orderStatus = await StateManager.TryGetStateAsync<OrderStatus>(OrderStatusStateName);
+        if (!orderStatus.HasValue)
+        {
+            _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it doesn't exist",
+                OrderId);
 
-        //    return false;
-        //}
+            return false;
+        }
 
-        //if (orderStatus.Value.Id == OrderStatus.Paid.Id || orderStatus.Value.Id == OrderStatus.Shipped.Id)
-        //{
-        //    _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it's in status {Status}",
-        //        OrderId, orderStatus.Value.Name);
+        if (orderStatus.Value.Id == OrderStatus.Paid.Id || orderStatus.Value.Id == OrderStatus.Shipped.Id)
+        {
+            _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it's in status {Status}",
+                OrderId, orderStatus.Value.Name);
 
-        //    return false;
-        //}
+            return false;
+        }
 
-        //await StateManager.SetStateAsync(OrderStatusStateName, OrderStatus.Cancelled);
+        await StateManager.SetStateAsync(OrderStatusStateName, OrderStatus.Cancelled);
 
         var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
 
@@ -182,7 +182,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
 
     public Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
-        _logger.LogInformation("Received {Actor}[{ActorId}] reminder: {Reminder}", nameof(OrderingProcessActor), OrderId, reminderName);
+        _logger.LogInformation($"Received {nameof(OrderingProcessActor)}[{OrderId}] reminder: {reminderName}");
 
         switch (reminderName)
         {

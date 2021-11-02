@@ -44,7 +44,8 @@ public class BasketService : ServiceBase
         var basket = await repository.GetBasketAsync(userId);
         if (basket == null)
         {
-            return Results.BadRequest();
+            basket = new CustomerBasket();
+            //return Results.BadRequest();
         }
         var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? userId;
 

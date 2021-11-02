@@ -80,19 +80,20 @@ namespace MASA.EShop.Api.Open.Callers.Basket
             throw new NotImplementedException();
         }
 
-        public async Task CheckoutAsync(BasketCheckout basketCheckout)
+        public async Task<bool> CheckoutAsync(BasketCheckout basketCheckout)
         {
             var response = await PostAsJsonAsync(checkoutUrl, basketCheckout);
 
             try
             {
                 response.EnsureSuccessStatusCode();
+                return true;
             }
             catch (Exception e)
             {
                 _logger.LogError($"Basket Service Request CheckoutAsync Error:{e}");
             }
-
+            return false;
         }
     }
 }
