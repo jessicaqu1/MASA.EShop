@@ -12,6 +12,7 @@ global using MASA.Contrib.ReadWriteSpliting.CQRS.Commands;
 global using MASA.Contrib.ReadWriteSpliting.CQRS.Queries;
 global using MASA.Contrib.Service.MinimalAPIs;
 global using MASA.EShop.Contracts.Basket;
+global using MASA.EShop.Contracts.Basket.Model.BFF;
 global using MASA.EShop.Contracts.Catalog.Event;
 global using MASA.EShop.Contracts.Ordering.Event;
 global using MASA.EShop.Contracts.Payment;

@@ -18,8 +18,6 @@ builder.Services.Configure<Settings>(builder.Configuration);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
-//builder.Services.AddHttpClient<ICatalogService, CatalogService>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
-
 builder.Services.AddCallerService();
 
 // Add Authentication services

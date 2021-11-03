@@ -1,6 +1,4 @@
-﻿using MASA.EShop.Contracts.Catalog.Model;
-
-namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
+﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
 
 public class CatalogViewModel
 {

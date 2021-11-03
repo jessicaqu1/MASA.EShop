@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace MASA.EShop.Api.Caller;
+﻿namespace MASA.EShop.Api.Caller;
 
 public abstract class ServiceCaller : IHttpClientCaller, IDaprClientCaller, ICaller
 {

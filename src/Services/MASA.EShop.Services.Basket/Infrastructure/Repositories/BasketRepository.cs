@@ -1,6 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model.BFF;
-
-namespace MASA.EShop.Services.Basket.Infrastructure.Repositories;
+﻿namespace MASA.EShop.Services.Basket.Infrastructure.Repositories;
 
 public class BasketRepository : IBasketRepository
 {

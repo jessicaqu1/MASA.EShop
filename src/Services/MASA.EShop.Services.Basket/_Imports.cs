@@ -3,6 +3,7 @@ global using Dapr.Client;
 global using MASA.Contrib.Service.MinimalAPIs;
 global using MASA.EShop.Contracts.Basket;
 global using MASA.EShop.Contracts.Basket.Model;
+global using MASA.EShop.Contracts.Basket.Model.BFF;
 global using MASA.EShop.Contracts.Ordering.Event;
 global using MASA.EShop.Services.Basket.Infrastructure.Repositories;
 global using Microsoft.AspNetCore.Mvc;

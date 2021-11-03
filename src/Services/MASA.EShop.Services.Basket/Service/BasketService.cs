@@ -1,6 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model.BFF;
-
-namespace MASA.EShop.Services.Basket.Service;
+﻿namespace MASA.EShop.Services.Basket.Service;
 
 public class BasketService : ServiceBase
 {
