@@ -1,6 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model.BFF;
-
-namespace MASA.EShop.Services.Basket.Service;
+﻿namespace MASA.EShop.Services.Basket.Service;
 
 public class BasketService : ServiceBase
 {
@@ -44,9 +42,7 @@ public class BasketService : ServiceBase
         var basket = await repository.GetBasketAsync(userId);
         if (basket == null)
         {
-            basket = new CustomerBasket();
-            //return Results.BadRequest();
-#warning 修改
+            return Results.BadRequest();
         }
         var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? userId;
 

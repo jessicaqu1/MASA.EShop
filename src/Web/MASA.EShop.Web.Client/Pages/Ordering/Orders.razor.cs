@@ -1,7 +1,4 @@
-﻿using MASA.EShop.Contracts.Ordering.Model;
-using MASA.EShop.Web.Client.Services.Ordering;
-
-namespace MASA.EShop.Web.Client.Pages.Ordering;
+﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
 public partial class Orders : EShopPageBase, IAsyncDisposable
@@ -21,31 +18,31 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
         if (IsAuthenticated)
         {
             await LoadOrders();
-            //hubConnection = new HubConnectionBuilder()
-            //    .WithUrl($"{Settings.Value.OrderHubUrl}/hub/notificationhub",
-            //        HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
-            //        {
-            //            options.AccessTokenProvider = () =>
-            //            {
-            //                return Task.FromResult("masa");
-            //            };
-            //        }
-            //    )
-            //    .ConfigureLogging(logging =>
-            //    {
-            //        logging.SetMinimumLevel(LogLevel.Information);
-            //        logging.AddConsole();
-            //    })
-            //    .WithAutomaticReconnect()
-            //    .Build();
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl($"{Settings.Value.OrderHubUrl}/hub/notificationhub",
+                    HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
+                    {
+                        options.AccessTokenProvider = () =>
+                        {
+                            return Task.FromResult("masa");
+                        };
+                    }
+                )
+                .ConfigureLogging(logging =>
+                {
+                    logging.SetMinimumLevel(LogLevel.Information);
+                    logging.AddConsole();
+                })
+                .WithAutomaticReconnect()
+                .Build();
 
-            //hubConnection.On<string, string>("UpdatedOrderState", (user, message) =>
-            //{
-            //    var encodedMsg = $"{user}: {message}";
-            //    StateHasChanged();
-            //});
+            hubConnection.On<string, string>("UpdatedOrderState", (user, message) =>
+            {
+                var encodedMsg = $"{user}: {message}";
+                StateHasChanged();
+            });
 
-            //await hubConnection.StartAsync();
+            await hubConnection.StartAsync();
 
         }
     }

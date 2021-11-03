@@ -1,6 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model.BFF;
-
-namespace MASA.EShop.Services.Ordering.Actors;
+﻿namespace MASA.EShop.Services.Ordering.Actors;
 
 public interface IOrderingProcessActor : IActor
 {

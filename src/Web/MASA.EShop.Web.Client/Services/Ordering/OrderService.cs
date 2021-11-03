@@ -1,63 +1,61 @@
-﻿using MASA.EShop.Contracts.Ordering.Model;
+﻿namespace MASA.EShop.Web.Client.Services.Ordering;
 
-namespace MASA.EShop.Web.Client.Services.Ordering
+public class OrderService : ServiceCaller
 {
-    public class OrderService : ServiceCaller
+    private readonly IServiceProvider _serviceProvider;
+
+    private readonly string getOrdersUrl = "";
+    private readonly string cancelOrderUrl = "";
+    private readonly string shipOrderUrl = "";
+
+    private string party = "/api/v1/orders/";
+
+    public OrderService(IServiceProvider serviceProvider,
+                        IOptions<Settings> settings) : base(serviceProvider)
     {
-        private readonly IServiceProvider _serviceProvider;
+        _serviceProvider = serviceProvider;
+        BaseAddress = settings.Value.ApiGatewayUrlExternal;
 
-        private readonly string getOrdersUrl = "";
-        private readonly string cancelOrderUrl = "";
-        private readonly string shipOrderUrl = "";
+        getOrdersUrl = $"{party}list";
+        cancelOrderUrl = $"{party}cancel";
+        shipOrderUrl = $"{party}ship";
+    }
 
-        private string party = "/api/v1/orders/";
+    protected override HttpMessageHandler? CreateHttpMessageHandler()
+    {
+        return _serviceProvider.GetService<HttpClientAuthorizationDelegatingHandler>();
+    }
 
-        public OrderService(IServiceProvider serviceProvider,
-                            IOptions<Settings> settings) : base(serviceProvider)
+    public async Task<List<OrderSummary>> GetMyOrders(string userId)
+    {
+        return await GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
+    }
+
+    public async Task<Order> GetOrder(string userId, int orderNumber)
+    {
+        return await GetFromJsonAsync<Order>($"{party}{userId}/{orderNumber}");
+    }
+
+    public async Task ShipOrder(int orderNumber)
+    {
+        var order = new
         {
-            _serviceProvider = serviceProvider;
-            BaseAddress = settings.Value.ApiGatewayUrlExternal;
+            OrderNumber = orderNumber
+        };
 
-            getOrdersUrl = $"{party}list";
-            cancelOrderUrl = $"{party}cancel";
-            shipOrderUrl = $"{party}ship";
-        }
-
-        protected override HttpMessageHandler? CreateHttpMessageHandler()
+        var stringContent = new FormUrlEncodedContent(new[]
         {
-            return _serviceProvider.GetService<HttpClientAuthorizationDelegatingHandler>();
-        }
-
-        public async Task<List<OrderSummary>> GetMyOrders(string userId)
-        {
-            return await GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
-        }
-
-        public async Task<Order> GetOrder(string userId, int orderNumber)
-        {
-            return await GetFromJsonAsync<Order>($"{party}{userId}/{orderNumber}");
-        }
-
-        public async Task ShipOrder(int orderNumber)
-        {
-            var order = new
-            {
-                OrderNumber = orderNumber
-            };
-
-            var stringContent = new FormUrlEncodedContent(new[]
-            {
                 new KeyValuePair<string, string>("orderNumber",orderNumber.ToString())
             });
 
-            var response = await PutAsync(shipOrderUrl, stringContent);
-            response.EnsureSuccessStatusCode();
-        }
+        var response = await PutAsync(shipOrderUrl, stringContent);
+        response.EnsureSuccessStatusCode();
+    }
 
-        public async Task CancelOrder(int orderNumber)
-        {
-            var response = await PutAsync($"{cancelOrderUrl}/{orderNumber}", null);
-            response.EnsureSuccessStatusCode();
-        }
+    public async Task CancelOrder(int orderNumber)
+    {
+        var response = await PutAsync($"{cancelOrderUrl}/{orderNumber}", null);
+        response.EnsureSuccessStatusCode();
     }
 }
+

@@ -2,9 +2,17 @@
 global using BlazorComponent.Components;
 global using MASA.Blazor.Presets;
 global using MASA.EShop.Api.Caller;
+global using MASA.EShop.Contracts.Basket.Model;
+global using MASA.EShop.Contracts.Basket.Model.Web;
+global using MASA.EShop.Contracts.Catalog.Model;
+global using MASA.EShop.Contracts.Ordering.Model;
 global using MASA.EShop.Web.Client;
 global using MASA.EShop.Web.Client.Infrastructure;
 global using MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
+global using MASA.EShop.Web.Client.Services.Basket;
+global using MASA.EShop.Web.Client.Services.Catalog;
+global using MASA.EShop.Web.Client.Services.Ordering;
+global using MASA.EShop.Web.Client.Services.Ordering.ViewModel;
 global using MASA.EShop.Web.Client.Shared;
 global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Authentication.Cookies;

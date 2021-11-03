@@ -1,8 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model;
-using MASA.EShop.Web.Client.Services.Basket;
-using MASA.EShop.Web.Client.Services.Ordering.ViewModel;
-
-namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿namespace MASA.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
 public partial class Checkout : EShopPageBase

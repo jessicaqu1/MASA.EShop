@@ -1,7 +1,7 @@
-﻿namespace MASA.EShop.Api.Caller
+﻿namespace MASA.EShop.Api.Caller;
+
+public interface IDaprClientCaller : ICaller
 {
-    public interface IDaprClientCaller : ICaller
-    {
-        public string? AppId { get; init; }
-    }
+    public string? AppId { get; init; }
 }
+

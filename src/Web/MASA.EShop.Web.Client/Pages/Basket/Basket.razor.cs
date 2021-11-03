@@ -1,7 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model.Web;
-using MASA.EShop.Web.Client.Services.Basket;
-
-namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿namespace MASA.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
 public partial class Basket : EShopPageBase

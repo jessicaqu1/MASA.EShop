@@ -158,17 +158,17 @@ services:
   #    - "./dapr/components/:/components"
   #  network_mode: "service:masa.eshop.web.admin"
 
-  #masa.eshop.web.client:
-  #  environment:
-  #    - ASPNETCORE_ENVIRONMENT=Development
-  #    - ASPNETCORE_URLS=http://+:80 #https://+:443;
-  #  ports:
-  #    - "8090:80"
-  #    - "443"
-  #  volumes:
-  #    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-  #  depends_on:
-  #    - masa.eshop.api.open
+  masa.eshop.web.client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80 #https://+:443;
+    ports:
+      - "8090:80"
+      - "443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - masa.eshop.api.open
 
   dapr-placement:
     command: ["./placement", "-port", "50000", "-log-level", "debug"]

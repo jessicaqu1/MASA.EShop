@@ -1,8 +1,4 @@
-﻿using MASA.EShop.Contracts.Catalog.Model;
-using MASA.EShop.Web.Client.Services.Basket;
-using MASA.EShop.Web.Client.Services.Catalog;
-
-namespace MASA.EShop.Web.Client.Pages.Catalog;
+﻿namespace MASA.EShop.Web.Client.Pages.Catalog;
 
 public partial class Catalog : EShopPageBase
 {

@@ -5,12 +5,12 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddCallerService(this IServiceCollection services)
     {
         services.AddHttpClient();
-        var callerServices = Assembly.GetCallingAssembly().GetTypes()
+        var callerServiceTypes = Assembly.GetCallingAssembly().GetTypes()
                             .Where(a => a.IsAssignableTo(typeof(ServiceCaller)));
 
-        foreach (var callerService in callerServices)
+        foreach (var callerServiceType in callerServiceTypes)
         {
-            services.AddScoped(callerService);
+            services.AddScoped(callerServiceType);
         }
 
         return services;

@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace MASA.EShop.Api.Caller;
+﻿namespace MASA.EShop.Api.Caller;
 
 public abstract class ServiceCaller : IHttpClientCaller, IDaprClientCaller, ICaller
 {
@@ -50,7 +48,10 @@ public abstract class ServiceCaller : IHttpClientCaller, IDaprClientCaller, ICal
             {
                 throw new($"Dapr caller mode {nameof(AppId)} must be a value");
             }
-            _daprClient = _serviceProvider.GetRequiredService<DaprClient>();
+            if (_daprClient is null)
+            {
+                _daprClient = _serviceProvider.GetRequiredService<DaprClient>();
+            }
         }
     }
 
